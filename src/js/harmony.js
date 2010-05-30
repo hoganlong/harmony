@@ -151,11 +151,12 @@ window.harmony = function init()
 
 
 	
-
+        /* don't need this -- we do it in the resize
 	if (!brush)
 	{
 		brush = new ribbon(context);
 	}
+        */
 	
 
 	window.addEventListener('mousemove', onWindowMouseMove, false);
@@ -182,10 +183,24 @@ function onWindowMouseMove( event )
 
 function onWindowResize()
 {
-	SCREEN_WIDTH = window.innerWidth;
-	SCREEN_HEIGHT = window.innerHeight;
+   SCREEN_WIDTH = window.innerWidth;
+   SCREEN_HEIGHT = window.innerHeight;
 	
-	
+   /* make a copy */
+   savecanvas = document.createElement("canvas");
+   savecanvas.width = canvas.width;
+   savecanvas.height = canvas.height;
+   savecanvas.getContext("2d").drawImage(canvas, 0, 0);
+
+   /* change the size */
+   canvas.width = SCREEN_WIDTH;
+   canvas.height = SCREEN_HEIGHT;
+  
+   /* draw the copy */
+   context.drawImage(savecanvas, 0, 0);
+
+   /* reset the brush (sad we lose the old random setup) */   
+   brush = new ribbon(context);
 }
 
 

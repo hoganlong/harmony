@@ -3,7 +3,7 @@ Harmony Background edition!
 
 0. Try out the test page: `index.html`
 
-1. Include `harmony.` and `dollar.js` in your HTML. 
+1. Include `harmony.js` and `dollar.js` in your HTML. 
    Dollar is technically optional, but then no easter egg for you.
 
 2. You'll probably think styles like this will be useful:
